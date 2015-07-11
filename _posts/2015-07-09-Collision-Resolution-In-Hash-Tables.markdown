@@ -5,7 +5,7 @@ date:   2015-07-09 13:59:23
 categories: jekyll update
 ---
 
-
+##Introduction
 I have recently begun at Hack Reactor, and we spent the last few days studying and implementing data structures. I have gathered, from conversations with teachers and fellow students alike, that the industry standard method for resolving collisions in hash tables is to store a linked list at each index of the hash table. This implementation is efficient and satisfactory, but I would like to propose another efficient and perhaps more elegant solution.
 
 Two prefaces before I begin:
@@ -14,7 +14,8 @@ Two prefaces before I begin:
 
 2. I did not come up with my proposal. I learned it from Andrew Cencini (Bennington College professor and co-founder of [Vapor.io](http://vapor.io)). I'm just interested in putting a really clear explanation/example out on the web.
 
-Okay. Since I'm writing this with the assumption you know how to implement a hash table, I'll abstract away all the actual hashing for now. So we start with an empty hash table (aka array).
+##Inserting Information
+Since I'm writing this with the assumption you know how to implement a hash table, I'll abstract away all the actual hashing for now. So we start with an empty hash table (aka array).
 
 ![empty hash table](/assets/emptyhash.png)
 
@@ -32,7 +33,7 @@ To recap: ["Harry", "Potter"] has been inserted at index 5. ["Minerva", "McGonag
 
 ![second hash table](/assets/hash2.png)
 
-
+##Retrieving Information
 When we go to retrieve ["Harry", "Potter"], we re-hash "Harry" and find the index of 5 again. ["Harry", "Potter"] is actually in index 5, so that is fine.
 
 There are two things that could happen when we go to retrieve ["Minerva", "McGonagall"].
@@ -61,12 +62,14 @@ So, in essense:
 
 - When you retrieve a value, if it's not in its original hashed location, you check other indexes in the hash table (following that predictable and consistent pattern you set earlier) to see if the value you're looking for is there, if another value is there, if a value *had been* there but has been removed, or whether no value has been there ever.
 
+##Advantages and Disadvantages of Linear Probing
 Of course, changing the index by simply adding 1 is a pretty naive way to solve conflict resolution. The lack of randomness creates problems with [clustering](https://en.wikipedia.org/wiki/Primary_clustering), or when the indexes are filled for long spans of the hash table and you have to walk through each of those indexes to find a free one.
 
 A better way to implement the same basic idea (that is, to try to insert your value at a different, but predictable index when a conflict occurs) is to have a *second* hash function that will give us a second number. We add these two indexes together (the one from the first hash function and the one from the second) and, similar to linear probing, if they are greater than the highest index in the hash table, we wrap around to the beginning of the hash table. Then we continue as outlined above.
 
 The sole difference between the in-depth explanation of linear probing above and the second hash function I just mentioned is the number we add to the original index given by the original hash function. If we implement a second hash function, the number it returns will be consistent (every time you hash a key, it will return the same index), but random between different keys. As long as the number of values in the hash table remains less than 75% of the number of indexes available (which is the threshold for all hash tables), this implementation remains effective and efficient, with a time complexity of O(1), just like any other hash table.
 
+##Conclusion
 That's it for this blog post! If you would like to read further, Wikipedia has excellent resources for further study. Perhaps check out the article on [quadratic probing](https://en.wikipedia.org/wiki/Quadratic_probing), or [universal hashing](https://en.wikipedia.org/wiki/Universal_hashing), or [K-independent hashing](https://en.wikipedia.org/wiki/K-independent_hashing). Enjoy!
 
 
