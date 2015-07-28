@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Follow-Up to Conflict Resolution Post"
+title:  "Conflict Resolution in Hash Tables: the Code"
 date:   2015-07-16
 categories: jekyll update
 ---
