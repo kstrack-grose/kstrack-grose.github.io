@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Creating Bare Servers in Node"
-date:   2015-08-21
+date:   2015-08-20
 categories: jekyll update
 ---
 ##Introduction
