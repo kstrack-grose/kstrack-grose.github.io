@@ -54,36 +54,35 @@ var readFile = Q.nbind(fs.readFile);
 var addToFile = Q.nbind(fs.appendFile);
 
 readDir('example/js/')
-.then(function(allFiles) {
+.then(function(files) {
   // make the catchall file
   newFile('example/js/concat')
-  // don't need to do anything when it works, just catch
-  .catch(function(err) {
-    console.log(new Error(err));
-  });
+  // we don't need to do anything after it runs
+  // and return the read dir information to use later
+  return files;
+})
+.then(function(allFiles) {
   // for each file
   for (var i = 0; i < allFiles.length; i++) {
     readFile('example/js/' + allFiles[i], 'utf8')
+    // add that info to the concatenation file
     .then(function(fileData) {
-      addToFile('example/js/concat', '\n\n' + fileData)
-      .then(function() {
-        console.log('successfully appended text using Q!');
-      }) // end of add to file
-      .catch(function(err) {
-        console.log(new Error(err));
-      });
-    }) // end of readfile
-    .catch(function(err) {
-      console.log(new Error(err));
-    }); 
+      return addToFile('example/js/concat', '\n\n' + fileData);
+    })
+    // this is invoked if addToFile is completed successfully
+    .then(function() {
+      console.log('successfully appended text using Q!');
+    });
   }; // end of for loop
-}) // end of readDir 'then'
+})
+// this catch method will catch ALL of the
+// previous nested and chained methods
 .catch(function(err) {
   console.log(new Error(err));
 }); // end of readDir
 {% endhighlight %} 
 
-You can see that the code written in promises is longer, but you can also intuit how separating the successes (**.then**s) and failures (**.catch**es) become very useful. As I alluded above, I find promises especially rewarding when I need to use an asychronous value across multiple files, such as making an API request.
+You can see that the code written in promises is longer, but you can read it as you would read sychronous code. You can also intuit how separating the successes (**.then**s) and failures (**.catch**es) becomes very useful, especially as **.catch** really does catch all errors for chained and nested promises. As I alluded above, I find promises especially rewarding when I need to use an asychronous value across multiple files, such as making an API request.
 
 ##Conclusion
 I hope the code I've been able to show you has illuminated some of the concepts I brought up in my previous post. As always, contact me with any questions/comments/corrections.
