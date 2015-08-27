@@ -30,11 +30,13 @@ To summarize:
 
 In the background, promises really are just like callbacks, with a couple of lovely build-in features. For one, having **.then** or **.catch** automatically invoked according to errors is convenient. Additionally, this chaining method removes some of the awful nesting complexity that is a part of callbacks. Once you wrap your mind around the structure of promises, you'll wonder how you were able to work without them. I promise.
 
-##What Are Some Promise Libraries I Could Use?
-The two server-side JavaScript libraries I use to work in promises are [**Q**](https://github.com/kriskowal/q) and [**bluebird**](https://github.com/petkaantonov/bluebird). I also use the [**$q**](https://docs.angularjs.org/api/ng/service/$q) injected dependency when I'm working in angular. There are a few minor differences between libraries, such as the syntax around creating and then resolving or rejecting promises, but the docs with each library are pretty comprehensive.
+##How Do I Use Promises?
+It turns out that ES6 has incorporated libraries, so you can check out the documentation there and use promises in your JavaScript without using a library! However, if you want your promises to be more robust, or just available in more browsers, I suggest the following libraries:
+
+For server-side JavaScript, I would recommend [**Q**](https://github.com/kriskowal/q) and [**bluebird**](https://github.com/petkaantonov/bluebird). I also use the [**$q**](https://docs.angularjs.org/api/ng/service/$q) injected dependency when I'm working in angular. There are a few minor differences between libraries, such as the syntax around creating and then resolving or rejecting promises, but the docs with each library are pretty comprehensive.
 
 ##Can You Show Me Example Code?
-Not at this time, sorry. But I will write a follow-up blog post with example code shortly. In the meantime, I recommend [this video](https://www.youtube.com/watch?v=OU7WuVGSuZw&feature=youtu.be) to go a bit more in-depth with promises.
+I've written a separate [follow-up blog post](https://kstrack-grose.github.io/jekyll/update/2015/08/26/promises-the-code.html) with example code in **Q**. In the meantime, I recommend [this video](https://www.youtube.com/watch?v=OU7WuVGSuZw&feature=youtu.be) to go a bit more in-depth with promises.
 
 ##Conclusion
 I hope this was a good introduction to promises! I've added some resources within the post that will help you continue your promise-related education.
