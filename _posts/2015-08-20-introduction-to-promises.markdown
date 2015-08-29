@@ -8,7 +8,7 @@ categories: jekyll update
 ##Introduction
 I'm a full-stack engineer, writing primarily in JavaScript. With various queries to databases and servers and APIs, my code is inundated with asynchronous functions. Initially, this meant my code was inundated with nested callbacks, forming messy, tangled chains that were hard to read and hard to follow.
 
-But *then* I discovered promises. Promises are a really great way to deal with asynchronous functions in a more intuitive way. With promises, you can write asynchronous code in the normal, visually pleasing vertical manner, instead of the nested-callback horizontal Triangle of Doom.
+But *then* I discovered promises. Promises are a great way to deal with asynchronous functions in a more intuitive way. With promises, you can write asynchronous code in the normal, visually pleasing vertical manner, instead of the nested-callback horizontal Triangle of Doom.
 
 ##What Are Promises?
 As I've said above, promises are a way to deal with asynchronous code. There are many different modules and frameworks around promises, and many database ORMs have their own implementation of promises, but the basic premise remains the same.
@@ -20,7 +20,11 @@ Once a promise is resolved or rejected, the respective value is passed along to 
 
 The chained **.then** function will be invoked if the promise (created above it) was resolved. It takes an anonymous function as an argument, and the promise's resolved value will be passed as the only argument to that anonymous function. You can then write out that anonymous function with the series of steps you would like to take with that value--anything you would have done in a callback, you can do here.
 
+The best thing about chained .then functions are that whatever is *return*ed within the function will be passed to the next .then function. In comparison to nested callbacks (in which the return statement is meaningless), its functionality in promises is a boon.
+
 The **.catch** function will be invoked if there was an error and the promise was rejected. Like .then, it takes an anonymous function as an argument. The value that will be passed to this anonymous function is the error message that explains *why* the promise was rejected. Once again, you can fill out this anonymous function in the same way you would fill out a callback.
+
+The greatest feature of the .catch function is that you only need one per chain. Any error that is thrown in any chained or nested promise will bubble up to be caught in the next .catch function. The downside here is that if you do not write a .catch function at all, the error will be swallowed.
 
 To summarize:
 
