@@ -112,7 +112,7 @@ server.listen(port, ip);
 ##How to Test The Code
 Basically, you put the code above into a JavaScript file on your computer, run the file with node, and go to http://localhost:3000 You should see 'GET request successful', as per the response in the server!
 
-However, if you don't have node or npm installed, check out my upcoming post about that process. I will also include a section on using the Chrome plugin *Postman* so that you can test the POST method as well.
+However, if you don't have node or npm installed, check out [this post I wrote](https://kstrack-grose.github.io/jekyll/update/2015/08/20/testing-your-server.html) about that process. I will also include a section on using the Chrome plugin *Postman* so that you can test the POST method as well.
 
 ##CORS and Other Edge Cases
 An in-depth discussion of Cross Origin Resource Sharing is beyond the scope of this post, but a quick to-do list would be as follows:
