@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 ##Introduction
-I have recently begun at Hack Reactor, and we spent the last few days studying and implementing data structures. I have gathered, from conversations with teachers and fellow students alike, that the industry standard method for resolving collisions in hash tables is to store a linked list at each index of the hash table. This implementation is efficient and satisfactory, but I would like to propose another efficient and perhaps more elegant solution.
+I've spent the last few days having fun revisiting and implementing data structures. Recently I've gathered that the industry standard method for resolving collisions in hash tables is to store a linked list at each index of the hash table. This implementation is efficient and satisfactory, but I would like to propose another efficient and perhaps more elegant solution.
 
 Two prefaces before I begin:
 
